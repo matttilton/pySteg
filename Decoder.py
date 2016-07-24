@@ -1,7 +1,9 @@
-from cImage import *
+from cImage import FileImage
+from cImage import EmptyImage
+from cImage import Pixel
 
-master = fileImage("master.png")
-key = fileImage("key.png")
+master = FileImage("Encoded.png")
+key = FileImage("master.png")
 result = EmptyImage(master.getWidth(), master.getHeight())
 
 for row in range(master.getHeight()):
@@ -15,3 +17,4 @@ for row in range(master.getHeight()):
         else:
             resultPixel = Pixel(0, 0, 0)
             result.setPixel(col, row, resultPixel)
+result.save("Decoded.png")
