@@ -17,23 +17,26 @@ def Encode(data):
     for row in range(master.getHeight()):
         for col in range(master.getWidth()):
             masterPixel = master.getPixel(col, row)
-            if (int(data[count]) == 1):
-                newPixel = flipLSB(masterPixel)
+            if count < (len(data) - 1):
+                if (int(data[count]) == 1):
+                    newPixel = flipLSB(masterPixel)
+                else:
+                    newPixel = masterPixel
+                count += 1
+                result.setPixel(col, row, newPixel)
             else:
-                newPixel = masterPixel
-            result.setPixel(col, row, newPixel)
+                result.setPixel(col, row, masterPixel)
     result.save("Encoded.png")
 
 
 def flipLSB(pixel):
-    red = pixel.getRed()
-    red = bin(red)
-    if(red[-1] == 1):
-        red[-1] = 0
-    elif(red[-1] == 0):
-        red[-1] = 1
-    red = int(red, 2)
-    pixel.setRed(red)
+    tmp = pixel.getRed()
+    if (tmp > 0):
+        tmp -= 1
+    else:
+        tmp += 1
+    pixel.setRed(tmp)
+    # pixel.setRed(255)
     return pixel
 
-Encode(toBinary("test"))
+Encode(toBinary("test String"))
