@@ -6,10 +6,17 @@ master = FileImage("master.png")
 result = EmptyImage(master.getWidth(), master.getHeight())
 
 
-def toBinary(data):
-    result = ''.join(format(ord(x), 'b') for x in data)
+def textToBinary(data):
+    result = ''.join(format(ord(x), '08b') for x in data)
     print(result)
     return str(result)
+
+
+def asciiTest(data):
+    binaryString = ''.join(str(x) for x in data)
+    binaryList = [binaryString[i:i+8] for i in range(0, len(binaryString), 8)]
+    for each in binaryList:
+        print(str(chr(int(each, 2))))
 
 
 def Encode(data):
@@ -39,4 +46,4 @@ def flipLSB(pixel):
     # pixel.setRed(255)
     return pixel
 
-Encode(toBinary("test String"))
+Encode(textToBinary("go fuck yourself"))
