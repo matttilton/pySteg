@@ -6,3 +6,5 @@ Encoding:
   
 Decoding:
   Read every pixel of both the image that you want to decode and the key image. If a pixel is different record a 1, if it is not record a 0. Convert binary string back to ascii.
+
+There is plenty of room for improvement, feel free to make suggestions.
