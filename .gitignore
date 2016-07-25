@@ -89,5 +89,5 @@ ENV/
 .ropeproject
 
 #Project Files
-Encoded.png
-Decoded.png
+.png
+!master.png
