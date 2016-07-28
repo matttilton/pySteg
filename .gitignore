@@ -91,3 +91,5 @@ ENV/
 #Project Files
 .png
 !master.png
+/.idea
+__pycache__
