@@ -7,12 +7,12 @@ StringToEncode = "test string"
 
 
 def testEncode():
-    encode = Encode("master.png", "testFileName.png", "../", "C:/Users/matt/Desktop")
+    encode = Encode("master.png", "testFileName.png", "../", "../")
     encode.Encode(encode.textToBinary(StringToEncode))
 
 
 def testDecode():
-    decode = Decode("master.png", "testFileName.png", "../", "C:/Users/matt/Desktop")
+    decode = Decode("master.png", "testFileName.png", "../", "../")
     ResultString = decode.binaryToText(decode.Decode())
     if ResultString == StringToEncode:
         print("Success!")
