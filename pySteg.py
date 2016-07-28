@@ -7,7 +7,6 @@
 
 from cImage import FileImage
 from cImage import EmptyImage
-from time import time
 
 
 class Encode:

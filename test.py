@@ -1,3 +1,4 @@
+"""test file for pySteg"""
 from time import time
 from pySteg import Decode
 from pySteg import Encode
