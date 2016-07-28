@@ -25,13 +25,13 @@ while running:
         sourcePath = input("Path for starting image: ")
         if (sourcePath == ""):
             sourcePath == "../"
-        sourceName = input("Name of ending image: ")
+        sourceName = input("Name of starting image: ")
         if (sourceName == ""):
             sourceName = "master.png"
         resultPath = input("Path for encoded image: ")
         if (resultPath == ""):
             resultPath = "../"
-        resultName = input("Name of starting image: ")
+        resultName = input("Name of ending image: ")
         if (resultName == ""):
             resultName == "encoded.png"
         stringToEncode = input("String to encode: ")
