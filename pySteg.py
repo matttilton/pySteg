@@ -16,7 +16,7 @@ class Encode:
                  key_directory, result_directory):
         self.EncodedFileName = result_file_name
         self.keyDirectory = key_directory
-        self.key = FileImage(key_file_name)
+        self.key = FileImage(self.keyDirectory + key_file_name)
         self.resultDirectory = result_directory
 
     def Encode(self, data):
@@ -35,11 +35,11 @@ class Encode:
                     result.setPixel(col, row, newPixel)
                 else:
                     result.setPixel(col, row, keyPixel)
-        result.save(self.resultDirectory + "/" + self.EncodedFileName)
+        result.save(self.resultDirectory + self.EncodedFileName)
 
     def backup(self):
         try:
-            self.backup = FileImage(self.EncodedFileName + ".png")
+            self.backup = FileImage(self.EncodedFileName + ".bak")
         except:
             self.backup = None
 
@@ -58,10 +58,10 @@ class Encode:
     def flipLSB(self, pixel):
         """Invert the LSB of the red value of a pixel."""
         tmp = pixel.getRed()
-        if (tmp > 0):
-            tmp -= 1
+        if (tmp > 120):
+            tmp -= 120
         else:
-            tmp += 1
+            tmp += 120
         pixel.setRed(tmp)
         return pixel
 
@@ -76,7 +76,7 @@ class Decode:
 
     def Decode(self):
         """Extract binary data from image."""
-        encoded = FileImage(self.resultDirectory + "/" + self.EncodedFileName)
+        encoded = FileImage(self.resultDirectory + self.EncodedFileName)
         result = []
         for row in range(encoded.getHeight()):
             for col in range(encoded.getWidth()):

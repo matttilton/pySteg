@@ -10,7 +10,8 @@ running = True
 while running:
     decoding = False
     encoding = False
-    action = input("Enter 1 for encoding or 2 for decoding: ")
+    help = "Press 1 to encode a file. \nPress 2 to decode a file. \nPress 3 to quit."
+    action = input(">>> ")
     if (action == "1"):
         encoding = True
         decoding = False
@@ -19,21 +20,23 @@ while running:
         decoding = True
     elif (action == "3"):
         running = False
+    elif (action == "help"):
+        print(help)
     else:
         print("Unrecognized value")
     while encoding:
         sourcePath = input("Path for starting image: ")
         if (sourcePath == ""):
-            sourcePath == "../"
+            sourcePath == ""
         sourceName = input("Name of starting image: ")
         if (sourceName == ""):
             sourceName = "master.png"
         resultPath = input("Path for encoded image: ")
         if (resultPath == ""):
-            resultPath = "../"
+            resultPath = ""
         resultName = input("Name of ending image: ")
         if (resultName == ""):
-            resultName == "encoded.png"
+            resultName = "encoded.png"
         stringToEncode = input("String to encode: ")
         if (stringToEncode == ""):
             stringToEncode = "Dont be so lazy next time and give me a string"
@@ -41,21 +44,24 @@ while running:
         startTime = time()
         encode.Encode(encode.textToBinary(stringToEncode))
         endTime = time()
-        print("Data encoded and checked in: " + str(endTime - startTime) + " seconds")
+        print("Data encoded in: " + str(endTime - startTime) + " seconds")
         encoding = False
     while decoding:
         sourcePath = input("Path for starting image: ")
         if (sourcePath == ""):
-            sourcePath == "../"
+            sourcePath == ""
         sourceName = input("Name of ending image: ")
         if (sourceName == ""):
             sourceName = "master.png"
         resultPath = input("Path for encoded image: ")
         if (resultPath == ""):
-            resultPath = "../"
+            resultPath = ""
         resultName = input("Name of starting image: ")
         if (resultName == ""):
-            resultName == "encoded.png"
+            resultName = "encoded.png"
+        startTime = time()
         decode = Decode(sourceName, resultName, sourcePath, resultPath)
-        print(decode.binaryToText(decode.Decode()))
+        print("\n" + decode.binaryToText(decode.Decode()))
+        endTime = time()
+        print("Data decoded: " + str(endTime - startTime) + " seconds")
         decoding = False
